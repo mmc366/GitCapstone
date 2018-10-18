@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
+    <meta name="author" content="@gotoariel">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+
+    <title>Health Risk & Resiliency Profile</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+        html, body {
+                    height: 100%                    
+        }
+        
+        body {
+              background-image:url("https://cdn1.imggmi.com/uploads/2018/10/14/1abb63528a87f84981458ea668c33c27-full.png");
+              background-repeat: no-repeat;
+              background-position: right bottom;
+              background-color: rgba(255,255,255,0.6);
+              background-blend-mode: lighten;
+        }
+  
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-left">
+          <h2><b><font color="green">Tell us about your health!</font></b></h2>
+          </br>
+          <h4>
+              In order for us to customize your Health Risk and Resiliency Profile, we will need some information about you and your health behaviors.<br/>
+              <br/>
+              Please answer <b><i>every</i></b> question to the best of your ability. The information you provide is anonymous.<br/>
+              <br/>
+              Remember, the more honest your responses the more accurate your HRP profile results will be! 
+              <br/> 
+              <br/>
+              <br/>
+              <br/>
+              <u><b>Demographics:</b></u> 
+              <br/>
+              <br/>
+              <form id='userinfoform' method='post' action='survey'>
+              1. What is your sex?<br/>
+              <br/>
+              <select name="Sex" form="userinfoform">
+                  <option value=0>Male</option>
+                  <option value=1>Female</option>
+              </select>
+              <br/>
+              <br/>
+              2. What is your age group?<br/>
+              <br/>
+              <select name="Age" form="userinfoform">
+                  <option value=1>18 - 24</option>
+                  <option value=2>25 - 29</option>
+                  <option value=3>30 - 34</option>
+                  <option value=4>35 - 39</option>
+                  <option value=5>40 - 44</option>
+                  <option value=6>45 - 49</option>
+                  <option value=7>50 - 54</option>
+                  <option value=8>55 - 59</option>
+                  <option value=9>60 - 64</option>
+                  <option value=10>65 - 69</option>
+                  <option value=11>70 - 74</option>
+                  <option value=12>75 - 79</option>
+                  <option value=13>80 or older</option>
+              </select>
+              <br/>
+              <br/>
+              3. Which one of the following would you say is your race?<br/>
+              <br/>
+              <select name="Race" form="userinfoform">
+                  <option value=1>White only, Non-Hispanic</option>
+                  <option value=2>Black only, Non-Hispanic</option>
+                  <option value=3>Other race only, Non-Hispanic</option>
+                  <option value=4>Multiracial, Non-Hispanic</option>
+                  <option value=5>Hispanic</option>
+              </select>
+              <br/>
+              <br/>
+              4. Are you:<br/>
+              <br/>
+              <select name="Marital" form="userinfoform">
+                   <option value=1>Married</option>
+                   <option value=2>Divorced</option>
+                   <option value=3>Widowed</option>
+                   <option value=4>Separated</option>
+                   <option value=5>Never married</option>
+                   <option value=6>A member of an unmarried couple</option> 
+              <select>
+              <br/>
+              <br/>
+              5. Are you currently...<br/>
+              <br/>
+              <select name="Employment" form="userinfoform">
+                  <option value=1>Employed for wages</option>
+                  <option value=2>Self-employed</option>
+                  <option value=3>Out of work for 1 year or more</option>
+                  <option value=4>Out of work for less than 1 year</option>
+                  <option value=5>A homemaker</option> 
+                  <option value=6>A student</option>
+                  <option value=7>Retired</option>
+                  <option value=8>Unable to work</option>
+              </select>
+              <br/>
+              <br/>
+              6. Is your annual household income from all sources...<br/>
+              <br/>
+              <select name="Income" form="userinfoform">
+                  <option value=1>Less than $15,000</option>
+                  <option value=2>$15,000 to less than $25,000</option>
+                  <option value=3>$25,000 to less than $35,000</option>
+                  <option value=4>$35,000 to less than $50,000</option>
+                  <option value=5>$50,000 or more</option>
+              </select>
+              <br/>
+              <br/>
+              7. What is the highest grade or year of school you completed? <br/>
+              <br/>
+              <select name="Education" form="userinfoform">
+                  <option value=1>Did not graduate high school</option>
+                  <option value=2>Graduated high school</option>
+                  <option value=3>Some college or technical school</option>
+                  <option value=4>Graduated college or technical school</option>
+              </select>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <u><b>Health History and Behaviors:</b></u>
+              <br/>
+              <br/>
+              8. During the past 30 days, how often did you drink regular soda or pop that contains sugar?<br/>
+              <br/>
+               Do <i><b>not</i></b> include diet soda or diet pop.
+              <br/>
+              <input type="text" name='Soda_Consumption' placeholder="4" required/>times in last 30 days
+              <br/>
+              <br/>
+              9.  During the past 30 days, how often did you drink sugar-sweetened fruit drinks (such as Kool-aid and lemonade), sweet tea, and sports or energy drinks (such as Gatorade and Red Bull)?<br/>
+              <br/>
+              Do <i><b>not</i></b> include 100 percent fruit juice, diet drinks, or artificially sweetened drinks.<br/>
+              <br/>
+              <input type="text" name='Sugary_Drink_Consumption' placeholder="6" required/>times per month
+              <br/>
+              <br/>
+              10. During the past 30 days, other than your regular job, did you do physical activity or exercise?<br/>
+              <br/>
+              <select name="Physical_Activity" form="userinfoform">
+                  <option value=0> No physical activity or exercise in last 30 days</option>
+                  <option value=1> Had physical activity or exercise in last 30 days</option>
+              </select>
+              <br/>
+              <br/>
+              11. During the past 30 days, how many days per week did you have at least one drink of any alcoholic beverage such as beer, wine, a malt beverage, or liquor?<br/>
+              <br/>
+              <input type="text" name="ALCDAY5" placeholder="2" required/>days per week
+              <br/>
+              <br/>
+              12. One drink is equivalent to a 12-ounce beer, a 5-ounce glass of wine, or a drink with one shot of liquor.<br/>
+              <br/>
+              During the past 30 days, on the days when you drank, about how many drinks did you drink on the average?<br/>
+              <br/>
+              (A 40 ounce beer would count as 3 drinks, or a cocktail drink with 2 shots would count as 2 drinks.)<br/>
+              <br/>
+              <input type="text" name="AVEDRNK2" placeholder="2" required/>drinks per day
+              <br/>
+              <br/>
+              13. Which one of the following best describes your smoker status?<br/>
+              <br/>
+              <select name="Smoker_Status" form="userinfoform">
+                  <option value=1>You have smoked at least 100 cigarettes in your lifetime and now smoke every day</option>
+                  <option value=2>You have smoked at least 100 ciagrettes in your lifetime and now smoke some days</option>
+                  <option value=3>You have smoked at least 100 cigarettes in your lifetime, but currently do not smoke</option>
+                  <option value=4>You have not smoked at least 100 cigarettes in your lifetime</option>
+              </select>
+              <br/>
+              <br/>
+              14. During the past 30 days, on how may days did you use marijuana or hashish?<br/>
+              <br/>
+              <input type="text" name='Marijuana_Use' placeholder="3" required/>days in last 30 days
+              <br/>
+              <br/>
+              15. On average, how many hours of sleep do you get in a 24-hour period?<br/>
+              <br/>
+              <input type="text" name='Average_Sleep' placeholder="3" required/>hours of sleep
+              <br/>
+              <br/>
+              16. About how much do you weigh without shoes (in pounds)?<br/>
+              <br/>
+              <input type="text" name='Weight' placeholder="200" required/>lbs
+              <br/>
+              <br/>
+              17. About how tall are you without shoes (in ft/inches)?<br/>
+              <br/>
+              <input type="text" name='Height_feet' placeholder="5" required/>ft
+              <input type="text" name='Height_inches' placeholder="8" required/>inches
+              <br/>
+              <br/>
+              18. The next question is about eating out at fast food and chain restaurants.<br/>
+              <br/>
+              When calorie information is available in the restaurant, how often does this information help you decide what to order?<br/>
+              <br/>
+              <select name="Calorie_Informed_Choices" form="userinfoform">
+                  <option value=1>Always</option>
+                  <option value=2>Most of the time</option>
+                  <option value=3>About half the time</option>
+                  <option value=4>Sometimes</option>
+                  <option value=5>Never</option>
+                  <option value=6>Never noticed or never looked for calorie information</option>
+                  <option value=8>Usually cannot find calorie information</option>
+                  <option value=9>Do not eat at fast food or chain restaurants</option>
+              </select>
+              <br/>
+              <br/>
+              19. Has a doctor, nurse, or other health professional ever told you that you had...<br/>
+              <br/>
+              A heart attack, also called a myocardial infarction?
+              <br/>
+              <select name="HeartAttackOutcomeDummy" form="userinfoform">
+                  <option value=0>No</option>
+                  <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              20. Angina or coronary heart disease?<br/>
+              <br/>
+              <select name="AnginaCoronaryHDOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              21. A stroke?<br/>
+              <br/>
+              <select name="StrokeOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              22. Asthma?<br/>
+              <br/>
+              <select name="AsthmaLifetimeOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              23. Skin cancer?<br/>
+              <br/>
+              <select name="SkinCancerOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>   
+              24. Any other types of cancer?<br/>
+              <br/>
+              <select name="OtherCancerOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>   
+              25. Chronic Obstructive Pulmonary Disease or COPD, emphysema or chronic bronchitis?<br/>
+              <br/>
+              <select name="COPDEmphysemaChronicBroncOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              26. Some form of arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia?<br/>
+              <br/>
+                (Arthritis diagnoses include: rheumatism, polymyalgia rheumatica; osteoarthritis (not osteporosis);<br/>
+                tendonitis, bursitis, bunion, tennis elbow; carpal tunnel syndrome, tarsal tunnel syndrome; joint infection, etc.)<br/>
+              <br/>
+              <select name="ArthritisOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              27. A depressive disorder, including depression, major depression, dysthymia, or minor depression?<br/>
+              <br/>
+              <select name="DepressionOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>
+              <br/>
+              <br/>
+              28. Kidney disease? Do <i><b>not</b></i> include kidney stones, bladder infection or incontinence.<br/>
+              <br/>
+              <select name="KidneyDiseaseOutcomeDummy" form="userinfoform">
+                   <option value=0>No</option>
+                   <option value=1>Yes</option>
+              </select>  
+              <br/>
+              <br/> 
+              <br/>
+              <br/>
+              <u><b>Quality of Life:</b></u>
+              <br/>
+              <br/>
+              29. In general, how satisfied are you with your life?<br/>
+              <br/>
+              <select name="Life_Satisfaction" form="userinfoform">
+                  <option value=1>Very satisfied</option>
+                  <option value=2>Satsified</option>
+                  <option value=3>Dissatisfied</option>
+                  <option value=4>Very dissatisfied</option>
+              </select>
+              <br/>
+              <br/>
+              30.  Now thinking about your physical health, which includes physical illness and injury, </br>
+              for how many days during the past 30 days was your physical health not good?<br/>
+              <br/>
+              <select name="Physical_QoL" form="userinfoform">
+                  <option value=1>Zero days when physical health was not good</option>
+                  <option value=2>1 - 13 days when physical health was not good</option>
+                  <option value=3>14 or more days when physical health was not good</option>
+              </select>
+              <br/>
+              <br/>
+              31. Now thinking about your mental health, which includes stress, depression, and problems with emotions,<br/>
+              for how many days during the past 30 days was your mental health not good?<br/>
+              <br/>
+              <select name="Mental_QoL" form="userinfoform">
+                  <option value=1>Zero days when mental health was not good</option>
+                  <option value=2>1 - 13 days when mental health was not good</option>
+                  <option value=3>14 or more days when mental health was not good</option>
+              </select>
+              <br/>
+              <br/>      
+              <br/>            
+              <center><input type="submit" value="Submit your responses"></center>
+              </form>
+              <br/>
+              <br/>
+          <p><a href="/">Go Home</a></p>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

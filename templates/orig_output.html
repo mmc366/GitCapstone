@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
+    <meta name="author" content="@gotoariel">
+    <!-- <link rel="icon" href="favicon.ico"> -->
+        <link
+            href="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.css"
+            rel="stylesheet" type="text/css">
+        <link
+            href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.13.0.min.css"
+            rel="stylesheet" type="text/css">
+        <link
+            href="https://cdn.pydata.org/bokeh/release/bokeh-tables-0.13.0.min.css"
+            rel="stylesheet" type="text/css">
+
+        <script src="https://cdn.pydata.org/bokeh/release/bokeh-0.13.0.min.js"></script>
+        <script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.13.0.min.js"></script>
+        <script src="https://cdn.pydata.org/bokeh/release/bokeh-tables-0.13.0.min.js"></script>
+        <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+        html, body {
+                    height: 100%                    
+        }
+        
+        body {
+              background-image:url("https://cdn1.imggmi.com/uploads/2018/10/14/1abb63528a87f84981458ea668c33c27-full.png");
+              background-repeat: no-repeat;
+              background-position: right bottom;
+              background-color: rgba(255,255,255,0.6);
+              background-blend-mode: lighten;
+        }
+  
+        </style>
+
+        <title>Your HRP Result</title>
+        {{ script | safe }}
+
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-left">
+          <h2><b><font color="green">Your Health Risk and Resiliency Profile Result</font></b></h2>
+           <h4><i>Your current predicted risk for diabetes is: <font color="red"><b>{{(prediction*100).round(decimals=1)}}%, {{risk_level}} </b></font></i></h4>
+           <h4><i>Your adjusted predicted risk for diabetes is: <font color="blue"><b>{{(adjusted_prediction*100).round(decimals=1)}}%, {{adjusted_risk_level}} </b></font></i></h4>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class=page>
+      {{ div | safe }}
+    </div>
+
+    <p>
+      <h2><b><font color="green">RX for a Healthier You</font></b></h2>
+      <h4><b>You can achieve a <font color="purple">{{(prediction*100 - adjusted_prediction*100).round(decimals=1)}}%</font> decrease in your current risk for diabetes</br>
+      (e.g., your adjusted risk) if you implement the following health behavior changes:</b></br>
+      </br>
+      </br>
+      <ul>
+           {% for item in modifications %}
+           <li style="font-size:20px"> {{ item }} </li>
+           {% endfor %}
+       </ul>
+      </br>
+      <h2><b><font color="green">Let's Get Healthy!</font></b></h2>
+      <h4>Below you will find several resources to help you follow your personalized RX for reducing diabetes risk.</br>
+      <b><i>Click on the picture</b></i> corresponding to the health behavior you wish to learn how to modify.</br>
+      </br>
+      Remember, health behavior change <b><i>is</b></i> possible!</br>
+      </br>
+      Your health behaviors have a major impact on your physical and mental wellbeing.</br>
+      </br>
+      <b><i>You</b></i> hold the power to change those behaviors and improve your health - so let's get started!</br>
+      </br>
+      <center>
+      <a href="https://www.sleepfoundation.org/sleep-tools-tips/healthy-sleep-tips"><img src="http://i68.tinypic.com/118qhdv.jpg" width="100" height="100" title="Sleep" alt="Sleep"></a>
+      <a href="http://www.heart.org/en/healthy-living/fitness/getting-active/getting-started---tips-for-long-term-exercise-success"><img src="http://i66.tinypic.com/29m6pzk.jpg" width="100" height="100" title="Exercise" alt="Exercise"></a>
+      <a href="https://www.cdc.gov/healthyweight/losing_weight/index.html"><img src="http://i68.tinypic.com/jggx03.jpg" width="100" height="100" title="Weight Loss" alt="Weight Loss"></a>
+      <a href="https://smokefree.gov/quit-smoking/getting-started/steps-to-manage-quit-day"><img src="http://i65.tinypic.com/oumvcw.jpg" width="100" height="100" title="Smoking Cessation" alt="Smoking Cessation"></a>
+      <a href="https://www.rethinkingdrinking.niaaa.nih.gov/Thinking-about-a-change/Strategies-for-cutting-down/Tips-To-Try.aspx"><img src="http://i63.tinypic.com/1fa0j5.jpg" width="100" height="100" title="Alcohol Consumption" alt="Alcohol Consumption"></a>
+      <a href="https://www.psychologytoday.com/us"><img src="http://i63.tinypic.com/15eigp2.jpg" width="100" height="100" title="Mental Health" alt="Mental Health"></a>
+      </center>
+      </h4>
+      </br>        
+      <center>Learn more about how to decrease your risk for diabetes here:
+      <a href="http://www.diabetes.org"/>American Diabetes Association</a></center>
+    <p><a href="/">Go Home</a></p>
+    </p>
+  </body>
+</html>
